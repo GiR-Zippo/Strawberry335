@@ -2,7 +2,7 @@
 /*!40101 SET NAMES utf8 */;
 /*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 
--- Dumping structure for table 335Logon.command
+-- Dumping structure for table command
 DROP TABLE IF EXISTS `command`;
 CREATE TABLE IF NOT EXISTS `command` (
   `name` varchar(50) NOT NULL DEFAULT '',
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `command` (
   PRIMARY KEY (`name`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 PAGE_CHECKSUM=1 ROW_FORMAT=PAGE COMMENT='Chat System';
 
--- Dumping data for table 335Logon.command: 41 rows
+-- Dumping data for table command: 46 rows
 /*!40000 ALTER TABLE `command` DISABLE KEYS */;
 INSERT INTO `command` (`name`, `security`, `help`) VALUES
         ('unmute', 2, 'Syntax: .unmute [$playerName]\r\n\r\nRestore chat messaging for any character from account of character $playerName (or selected). Character can be ofline.'),
@@ -54,11 +54,16 @@ INSERT INTO `command` (`name`, `security`, `help`) VALUES
         ('banlist ip', 2, 'Syntax: .banlist ip [$Ip]\r\nSearches the banlist for a IP pattern or show full list of IP bans.'),
         ('banlist', 2, 'Syntax: .banlist $subcommand\nType .banlist to see the list of possible subcommands or .help banlist $subcommand to see info on subcommands'),
         ('server info', 0, 'Syntax: .server info\r\n\r\nDisplay server version and the number of connected players.'),
-        ('whispers', 2, 'Syntax: .whispers on|off\r\nEnable/disable accepting whispers by GM from players. By default use trinityd.conf setting.');
+        ('whispers', 2, 'Syntax: .whispers on|off\r\nEnable/disable accepting whispers by GM from players. By default use trinityd.conf setting.'),
+        ('account addon', 5, 'Syntax: .account addon #addon\nSet expansion addon level allowed. Addon values: 0 - normal, 1 - tbc, 2 - wotlk.'),
+        ('account delete', 6, 'Syntax: .account delete $account\r\n\r\nDelete account with all characters.'),
+        ('account lock', 5, 'Syntax: .account lock [on|off]\r\n\r\nAllow login from account only from current used IP or remove this requirement.'),
+        ('account onlinelist', 5, 'Syntax: .account onlinelist\r\n\r\nShow list of online accounts.'),
+        ('account password', 0, 'Syntax: .account password $old_password $new_password $new_password\r\n\r\nChange your account password.');
 /*!40000 ALTER TABLE `command` ENABLE KEYS */;
 
 
--- Dumping structure for table 335Logon.logonlist
+-- Dumping structure for table logonlist
 DROP TABLE IF EXISTS `logonlist`;
 CREATE TABLE IF NOT EXISTS `logonlist` (
   `id` int(8) NOT NULL DEFAULT '0',
@@ -68,14 +73,14 @@ CREATE TABLE IF NOT EXISTS `logonlist` (
   PRIMARY KEY (`id`)
 ) ENGINE=Aria DEFAULT CHARSET=latin1 PAGE_CHECKSUM=1;
 
--- Dumping data for table 335Logon.logonlist: 1 rows
+-- Dumping data for table logonlist: 1 rows
 /*!40000 ALTER TABLE `logonlist` DISABLE KEYS */;
 INSERT INTO `logonlist` (`id`, `Address`, `Name`, `Pass`) VALUES
         (1, '127.0.0.1', 'Strawberry', '12345');
 /*!40000 ALTER TABLE `logonlist` ENABLE KEYS */;
 
 
--- Dumping structure for table 335Logon.logonstates
+-- Dumping structure for table logonstates
 DROP TABLE IF EXISTS `logonstates`;
 CREATE TABLE IF NOT EXISTS `logonstates` (
   `realmid` int(11) NOT NULL,
@@ -84,12 +89,14 @@ CREATE TABLE IF NOT EXISTS `logonstates` (
   PRIMARY KEY (`realmid`)
 ) ENGINE=Aria DEFAULT CHARSET=latin1 PAGE_CHECKSUM=1;
 
--- Dumping data for table 335Logon.logonstates: 0 rows
+-- Dumping data for table logonstates: 1 rows
 /*!40000 ALTER TABLE `logonstates` DISABLE KEYS */;
+INSERT INTO `logonstates` (`realmid`, `entry`, `value`) VALUES
+        (1, 1, 1457213640);
 /*!40000 ALTER TABLE `logonstates` ENABLE KEYS */;
 
 
--- Dumping structure for table 335Logon.map_table
+-- Dumping structure for table map_table
 DROP TABLE IF EXISTS `map_table`;
 CREATE TABLE IF NOT EXISTS `map_table` (
   `MapID` int(11) NOT NULL,
@@ -99,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `map_table` (
   PRIMARY KEY (`MapID`)
 ) ENGINE=Aria DEFAULT CHARSET=latin1 PAGE_CHECKSUM=1;
 
--- Dumping data for table 335Logon.map_table: 135 rows
+-- Dumping data for table map_table: 135 rows
 /*!40000 ALTER TABLE `map_table` DISABLE KEYS */;
 INSERT INTO `map_table` (`MapID`, `NodeID`, `BackupNodeID`, `SubNode`) VALUES
         (0, 1, 0, 0),
@@ -240,7 +247,7 @@ INSERT INTO `map_table` (`MapID`, `NodeID`, `BackupNodeID`, `SubNode`) VALUES
 /*!40000 ALTER TABLE `map_table` ENABLE KEYS */;
 
 
--- Dumping structure for table 335Logon.nodecharacters
+-- Dumping structure for table nodecharacters
 DROP TABLE IF EXISTS `nodecharacters`;
 CREATE TABLE IF NOT EXISTS `nodecharacters` (
   `realmid` int(11) unsigned NOT NULL DEFAULT '0',
@@ -250,12 +257,12 @@ CREATE TABLE IF NOT EXISTS `nodecharacters` (
   KEY `acctid` (`acctid`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 PAGE_CHECKSUM=1 ROW_FORMAT=DYNAMIC COMMENT='Realm Character Tracker';
 
--- Dumping data for table 335Logon.nodecharacters: 0 rows
+-- Dumping data for table nodecharacters: 0 rows
 /*!40000 ALTER TABLE `nodecharacters` DISABLE KEYS */;
 /*!40000 ALTER TABLE `nodecharacters` ENABLE KEYS */;
 
 
--- Dumping structure for table 335Logon.nodelist
+-- Dumping structure for table nodelist
 DROP TABLE IF EXISTS `nodelist`;
 CREATE TABLE IF NOT EXISTS `nodelist` (
   `NodeID` int(11) NOT NULL,
@@ -269,14 +276,14 @@ CREATE TABLE IF NOT EXISTS `nodelist` (
   PRIMARY KEY (`NodeID`)
 ) ENGINE=Aria DEFAULT CHARSET=latin1 PAGE_CHECKSUM=1;
 
--- Dumping data for table 335Logon.nodelist: 1 rows
+-- Dumping data for table nodelist: 1 rows
 /*!40000 ALTER TABLE `nodelist` DISABLE KEYS */;
 INSERT INTO `nodelist` (`NodeID`, `Name`, `Address`, `Port`, `ControlPort`, `Online`, `NodeType`, `allowedSecurityLevel`) VALUES
         (1, 'Alpha', '127.0.0.1', 8099, 8200, 0, 1, 0);
 /*!40000 ALTER TABLE `nodelist` ENABLE KEYS */;
 
 
--- Dumping structure for table 335Logon.uptime
+-- Dumping structure for table uptime
 DROP TABLE IF EXISTS `uptime`;
 CREATE TABLE IF NOT EXISTS `uptime` (
   `realmid` int(11) unsigned NOT NULL,
@@ -288,9 +295,11 @@ CREATE TABLE IF NOT EXISTS `uptime` (
   PRIMARY KEY (`realmid`,`starttime`)
 ) ENGINE=Aria DEFAULT CHARSET=utf8 PAGE_CHECKSUM=1 ROW_FORMAT=DYNAMIC COMMENT='Uptime system';
 
--- Dumping data for table 335Logon.uptime: 0 rows
+-- Dumping data for table uptime: 2 rows
 /*!40000 ALTER TABLE `uptime` DISABLE KEYS */;
+INSERT INTO `uptime` (`realmid`, `starttime`, `startstring`, `uptime`, `maxplayers`, `revision`) VALUES
+        (1, 1456615686, '2016-02-28 00:28:06', 0, 0, 'Strawberry Core  rev.  (8b225b5fec36) (Unix, Debug)'),
+        (1, 1456615821, '2016-02-28 00:30:21', 0, 0, 'Strawberry Core  rev.  (8b225b5fec36) (Unix, Debug)');
 /*!40000 ALTER TABLE `uptime` ENABLE KEYS */;
 /*!40014 SET FOREIGN_KEY_CHECKS=1 */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
- 
