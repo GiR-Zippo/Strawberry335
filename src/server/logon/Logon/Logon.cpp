@@ -328,7 +328,7 @@ void Logon::LoadDBVersion()
     if (result)
     {
         Field* fields = result->Fetch();
-        m_DBVersion              = fields[0].GetString();
+        m_DBVersion = fields[0].GetString();
 
         // will be overwrite by config values if different and non-0
         m_int_configs[CONFIG_CLIENTCACHE_VERSION] = fields[1].GetUInt32();
