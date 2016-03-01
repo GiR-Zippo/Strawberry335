@@ -24,4 +24,6 @@ This can be found here: https://github.com/GiR-Zippo/Strawberry335/wiki
 
 I know the World-database is missing :)
 
-Bu no panic, atm. I'm doing some patches and updates on it
+But no panic. Atm. I'm doing some patches and updates on it.
+
+When it's ready to upload you'll find the database in this repository.
