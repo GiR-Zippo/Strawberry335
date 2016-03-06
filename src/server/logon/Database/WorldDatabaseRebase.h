@@ -10,7 +10,7 @@
 
 
 
-typedef UNORDERED_MAP <uint32, uint32> CreatureMap;
+typedef std::unordered_map <uint32, uint32> CreatureMap;
 
 class WorldDatabaseRebase
 {

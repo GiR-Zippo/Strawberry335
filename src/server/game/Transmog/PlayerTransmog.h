@@ -6,7 +6,7 @@
 #include "DatabaseEnv.h"
 #include "TransmogMgr.h"
 
-typedef UNORDERED_MAP<uint32, uint32> ItemTransmogMap;
+typedef std::unordered_map<uint32, uint32> ItemTransmogMap;
 
 class PlayerTransmog
 {

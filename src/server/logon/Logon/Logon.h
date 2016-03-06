@@ -3,14 +3,14 @@
 
 #include "Common.h"
 #include "Timer.h"
-#include <ace/Singleton.h>
 #include "SharedDefines.h"
-#include <ace/Atomic_Op.h>
 #include "QueryResult.h"
 #include "Callback.h"
+#include <atomic>
 #include <map>
 #include <set>
 #include <list>
+#include <unordered_map>
 
 typedef std::set<std::string> AntiSpam;
 class Player;
@@ -296,10 +296,13 @@ struct CliCommandHolder
 class Logon
 {
     public:
-        static volatile uint32 m_logonLoopCounter;
+        static Logon* instance()
+        {
+            static Logon instance;
+            return &instance;
+        }
 
-        Logon();
-        ~Logon();
+        static std::atomic<uint32> m_logonLoopCounter;
 
         void Update(uint32 diff);
 
@@ -394,13 +397,15 @@ class Logon
         void _UpdateRealmCharCount(PreparedQueryResult resultCharCount);
 
     private:
+        Logon();
+        ~Logon();
         ACE_Thread_Mutex _Mutex_;
         AntiSpam _antiSpam;
-        UNORDERED_MAP<int, char> _antiSpamReplace;
+        std::unordered_map<int, char> _antiSpamReplace;
         std::string _fakemsg;
         std::string m_dataPath;
-        static volatile bool m_stopEvent;
-        static volatile bool m_haltEvent;
+        static std::atomic<bool> m_stopEvent;
+        static std::atomic<bool> m_haltEvent;
         static uint8 m_ExitCode;
         uint32 m_ShutdownTimer;
         uint32 m_ShutdownMask;
@@ -441,6 +446,6 @@ class Logon
         ACE_Future_Set<PreparedQueryResult> m_realmCharCallbacks;
 };
 extern uint32 realmID;
-#define sLogon ACE_Singleton<Logon, ACE_Null_Mutex>::instance()
+#define sLogon Logon::instance()
 #endif
 

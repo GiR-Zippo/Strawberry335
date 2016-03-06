@@ -18,21 +18,12 @@
 #include "wdt.h"
 #include <fcntl.h>
 
-#if defined( __GNUC__ )
-    #define _open   open
-    #define _close close
-    #ifndef O_BINARY
-        #define O_BINARY 0
-    #endif
-#else
-    #include <io.h>
-#endif
-
 #ifdef O_LARGEFILE
     #define OPEN_FLAGS  (O_RDONLY | O_BINARY | O_LARGEFILE)
 #else
     #define OPEN_FLAGS (O_RDONLY | O_BINARY)
 #endif
+
 extern ArchiveSet gOpenArchives;
 
 typedef struct
@@ -97,13 +88,11 @@ void CreateDir( const std::string& Path )
 
 bool FileExists( const char* FileName )
 {
-    int fp = _open(FileName, OPEN_FLAGS);
-    if(fp != -1)
+    if (FILE *file = fopen(FileName, "r"))
     {
-        _close(fp);
+        fclose(file);
         return true;
     }
-
     return false;
 }
 

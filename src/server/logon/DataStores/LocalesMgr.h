@@ -21,10 +21,10 @@ struct ItemLocale
     StringVector Description;
 };
 
-typedef UNORDERED_MAP<uint32, CreatureLocale>   CreatureLocaleContainer;
-typedef UNORDERED_MAP<uint32, GameObjectLocale> GameObjectLocaleContainer;
-typedef UNORDERED_MAP<uint32, ItemLocale> ItemLocaleContainer;
-typedef UNORDERED_MAP<uint32, QuestLocale> QuestLocaleContainer;
+typedef std::unordered_map<uint32, CreatureLocale>   CreatureLocaleContainer;
+typedef std::unordered_map<uint32, GameObjectLocale> GameObjectLocaleContainer;
+typedef std::unordered_map<uint32, ItemLocale> ItemLocaleContainer;
+typedef std::unordered_map<uint32, QuestLocale> QuestLocaleContainer;
 
 class LocalesMgr
 {

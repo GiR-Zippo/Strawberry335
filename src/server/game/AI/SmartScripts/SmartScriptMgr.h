@@ -1067,7 +1067,7 @@ struct SmartAction
             uint32 summonEntry;
             uint32 summonDuration; // 0 -> permanent until dead
             uint32 a; // Skaliert die Spirale
-            uint32 k; // Ändert das aussehen (?)
+            uint32 k; // ï¿½ndert das aussehen (?)
             uint32 r_max;
             uint32 phi_delta;
         } summonVortex;
@@ -1443,10 +1443,10 @@ struct SmartScriptHolder
 
 };
 
-typedef UNORDERED_MAP<uint32, WayPoint*> WPPath;
+typedef std::unordered_map<uint32, WayPoint*> WPPath;
 
 typedef std::list<WorldObject*> ObjectList;
-typedef UNORDERED_MAP<uint32, ObjectList*> ObjectListMap;
+typedef std::unordered_map<uint32, ObjectList*> ObjectListMap;
 
 class SmartWaypointMgr
 {
@@ -1465,14 +1465,14 @@ class SmartWaypointMgr
         }
 
     private:
-        UNORDERED_MAP<uint32, WPPath*> waypoint_map;
+        std::unordered_map<uint32, WPPath*> waypoint_map;
 };
 
 // all events for a single entry
 typedef std::vector<SmartScriptHolder> SmartAIEventList;
 
 // all events for all entries / guids
-typedef UNORDERED_MAP<int32, SmartAIEventList> SmartAIEventMap;
+typedef std::unordered_map<int32, SmartAIEventList> SmartAIEventMap;
 
 class SmartAIMgr
 {

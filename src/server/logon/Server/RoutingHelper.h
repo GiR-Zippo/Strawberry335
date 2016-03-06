@@ -5,6 +5,7 @@
 #include <ace/Singleton.h>
 #include <ace/Thread_Mutex.h>
 #include "Common.h"
+#include <unordered_map>
 
 class ClientSession;
 
@@ -21,7 +22,7 @@ struct NodeMap
     uint32 SubNodeID;
     bool SubNodeOnline;
 };
-typedef UNORDERED_MAP<uint32, NodeMap> NodeMapList;
+typedef std::unordered_map<uint32, NodeMap> NodeMapList;
 
 struct NodeList
 {
@@ -40,7 +41,7 @@ struct NodeList
     uint32 LastCorpseID;   // The last used CorpseID
 };
 
-typedef UNORDERED_MAP<uint32, NodeList> NodeListList;
+typedef std::unordered_map<uint32, NodeList> NodeListList;
 
 class RoutingHelper
 {

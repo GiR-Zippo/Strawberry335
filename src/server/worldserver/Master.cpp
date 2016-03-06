@@ -132,15 +132,15 @@ int Master::Run()
     sLog->outString("%s%s%s (worldserver-daemon)", _FULLVERSION_A, git::getProduktVersionStr(), _FULLVERSION_B);
     sLog->outString("<Ctrl-C> to stop.\n");
 
-    sLog->outString(" ______                       __");
-    sLog->outString("/\\__  _\\       __          __/\\ \\__");
-    sLog->outString("\\/_/\\ \\/ _ __ /\\_\\    ___ /\\_\\ \\, _\\  __  __");
-    sLog->outString("   \\ \\ \\/\\`'__\\/\\ \\ /' _ `\\/\\ \\ \\ \\/ /\\ \\/\\ \\");
-    sLog->outString("    \\ \\ \\ \\ \\/ \\ \\ \\/\\ \\/\\ \\ \\ \\ \\ \\_\\ \\ \\_\\ \\");
-    sLog->outString("     \\ \\_\\ \\_\\  \\ \\_\\ \\_\\ \\_\\ \\_\\ \\__\\\\/`____ \\");
-    sLog->outString("      \\/_/\\/_/   \\/_/\\/_/\\/_/\\/_/\\/__/ `/___/> \\");
-    sLog->outString("                                 C O R E  /\\___/");
-    sLog->outString("http://TrinityCore.org                    \\/__/\n");
+    sLog->outString("   #   #            __");
+    sLog->outString("   #   #        (__/  )               /)");
+    sLog->outString("  #######         / _/_ __  _  _   _ (/_  _  __  __ ");
+    sLog->outString(" ## ### ##     ) /  (__/ (_(_(_(_(/ /_) _(/_/ (_/ (_(_/_");
+    sLog->outString("###########   (_/                         C O R E  .-/");
+    sLog->outString("# ####### #                                       (_/");
+    sLog->outString("# #     # #");
+    sLog->outString("   ## ##");
+    sLog->outString("\n");
 
     /// worldserver PID file creation
     std::string pidfile = ConfigMgr::GetStringDefault("PidFile", "");

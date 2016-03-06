@@ -42,10 +42,10 @@
 #include <algorithm>
 #include <functional>
 
-volatile bool Logon::m_stopEvent = false;
-volatile bool Logon::m_haltEvent = false;
+std::atomic<bool> Logon::m_stopEvent(false);
+std::atomic<bool> Logon::m_haltEvent(false);
 uint8 Logon::m_ExitCode = SHUTDOWN_EXIT_CODE;
-volatile uint32 Logon::m_logonLoopCounter = 0;
+std::atomic<uint32> Logon::m_logonLoopCounter(0);
 
 Logon::Logon()
 {
@@ -1138,7 +1138,7 @@ void Logon::InitAntiSpam()
 
 char Logon::GetReplaceChar(uint16 c) const
 {
-    UNORDERED_MAP<int, char>::const_iterator itr = _antiSpamReplace.find(c);
+    std::unordered_map<int, char>::const_iterator itr = _antiSpamReplace.find(c);
 
     if (itr == _antiSpamReplace.end())
         return c;

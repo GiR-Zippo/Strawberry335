@@ -9,7 +9,7 @@ bool ChatHandler::HandleAccountCommand(char const* /*args*/)
     PSendSysMessage(LANG_ACCOUNT_LEVEL, uint32(gmLevel));
     return true;
 }
-    
+
 bool ChatHandler::HandleAccountAddonCommand(const char *args)
 {
     if (!*args)

@@ -65,7 +65,7 @@ struct ChannelT
     std::string ChannelName;
     std::string ChannelPass;
 };
-typedef UNORDERED_MAP<uint32, ChannelT> ChannelList;
+typedef std::unordered_map<uint32, ChannelT> ChannelList;
 
 class ClientSession
 {

@@ -19,7 +19,7 @@
 #include <list>
 
 
-typedef UNORDERED_MAP<uint32, ClientSession*> SessionMap;
+typedef std::unordered_map<uint32, ClientSession*> SessionMap;
 
 class ClientSessionMgr
 {
@@ -112,7 +112,7 @@ class ClientSessionMgr
         size_t                                                   _SessionThreadsCount;
         Queue                                                    _QueuedPlayer;
 
-        typedef UNORDERED_MAP<uint32, time_t> DisconnectMap;
+        typedef std::unordered_map<uint32, time_t> DisconnectMap;
         DisconnectMap _disconnects;
 
         uint32 _maxActiveSessionCount;

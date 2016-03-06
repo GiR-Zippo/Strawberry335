@@ -12,7 +12,7 @@ struct BGTemplate
     uint8 MaxLevel;
 
 };
-typedef UNORDERED_MAP<uint32, BGTemplate> BGTemplateContainer;
+typedef std::unordered_map<uint32, BGTemplate> BGTemplateContainer;
 
 
 class BattlegroundMgr

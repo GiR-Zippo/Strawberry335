@@ -4,7 +4,7 @@
 #include "SharedDefines.h"
 #include "QuestDef.h"
 
-typedef UNORDERED_MAP<uint32, QuestTemplate*> QuestTemplateContainer;
+typedef std::unordered_map<uint32, QuestTemplate*> QuestTemplateContainer;
 
 class Quest
 {

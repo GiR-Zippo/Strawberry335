@@ -9,7 +9,7 @@ struct IDStruc
     uint64 newID;
 };
 
-typedef UNORDERED_MAP<uint64, IDStruc> CreatureList;
+typedef std::unordered_map<uint64, IDStruc> CreatureList;
 
 class WorldRebase
 {

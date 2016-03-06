@@ -39,18 +39,18 @@ struct TrinityStringLocale
     StringVector Content;
 };
 
-typedef UNORDERED_MAP<int32, TrinityStringLocale> TrinityStringLocaleContainer;
+typedef std::unordered_map<int32, TrinityStringLocale> TrinityStringLocaleContainer;
 
 // Trinity string ranges
 #define MIN_TRINITY_STRING_ID           1                    // 'trinity_string'
 #define MAX_TRINITY_STRING_ID           2000000000
 
-typedef UNORDERED_MAP<uint64, Player*> PlayerMap;
+typedef std::unordered_map<uint64, Player*> PlayerMap;
 
 class ObjectMgr
 {
     public:
-        //Zugänge zu unseren Playern
+        //Zugï¿½nge zu unseren Playern
         void Player_Add(Player* player);
         void Player_Remove(Player* player);
 

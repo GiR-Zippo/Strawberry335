@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2008-2016 TrinityCore <http://www.trinitycore.org/>
- * Copyright (C) 2005-2011 MaNGOS <http://getmangos.com/>
+ * Copyright (C) 2005-2009 MaNGOS <http://getmangos.com/>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -15,34 +15,32 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#include <string>
-#include <iostream>
 
-#include "TileAssembler.h"
+#ifndef TRINITYCORE_STRING_FORMAT_H
+#define TRINITYCORE_STRING_FORMAT_H
 
-int main(int argc, char* argv[])
+#include "format.h"
+
+namespace Trinity
 {
-    if (argc != 3)
+    /// Default TC string format function.
+    template<typename Format, typename... Args>
+    inline std::string StringFormat(Format&& fmt, Args&&... args)
     {
-        std::cout << "usage: " << argv[0] << " <raw data dir> <vmap dest dir>" << std::endl;
-        return 1;
+        return fmt::sprintf(std::forward<Format>(fmt), std::forward<Args>(args)...);
     }
 
-    std::string src = argv[1];
-    std::string dest = argv[2];
-
-    std::cout << "using " << src << " as source directory and writing output to " << dest << std::endl;
-
-    VMAP::TileAssembler* ta = new VMAP::TileAssembler(src, dest);
-
-    if (!ta->convertWorld2())
+    /// Returns true if the given char pointer is null.
+    inline bool IsFormatEmptyOrNull(const char* fmt)
     {
-        std::cout << "exit with errors" << std::endl;
-        delete ta;
-        return 1;
+        return fmt == nullptr;
     }
 
-    delete ta;
-    std::cout << "Ok, all done" << std::endl;
-    return 0;
+    /// Returns true if the given std::string is empty.
+    inline bool IsFormatEmptyOrNull(std::string const& fmt)
+    {
+        return fmt.empty();
+    }
 }
+
+#endif

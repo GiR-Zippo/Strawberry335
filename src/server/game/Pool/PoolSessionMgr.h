@@ -15,7 +15,7 @@
 
 class PoolSession;
 
-typedef UNORDERED_MAP<uint32, PoolSession*> PoolSessionMap;
+typedef std::unordered_map<uint32, PoolSession*> PoolSessionMap;
 
 class PoolSessionMgr
 {
@@ -61,7 +61,7 @@ class PoolSessionMgr
         Queue m_QueuedPlayer;
         ACE_Based::LockedQueue<PoolSession*, ACE_Thread_Mutex> addSessQueue;
         PoolSessionMap m_sessions;
-        typedef UNORDERED_MAP<uint32, time_t> DisconnectMap;
+        typedef std::unordered_map<uint32, time_t> DisconnectMap;
         DisconnectMap m_disconnects;
 
         uint32 m_maxActiveSessionCount;

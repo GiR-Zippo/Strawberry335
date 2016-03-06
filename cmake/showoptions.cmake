@@ -33,6 +33,7 @@ endif()
 
 if( TOOLS )
   message("* Build map/vmap tools   : Yes")
+  add_definitions(-DNO_CORE_FUNCS)
 else()
   message("* Build map/vmap tools   : No  (default)")
 endif()

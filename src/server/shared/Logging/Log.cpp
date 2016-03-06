@@ -16,6 +16,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "ace/Stack_Trace.h"
 #include "Common.h"
 #include "Log.h"
 #include "Configuration/Config.h"

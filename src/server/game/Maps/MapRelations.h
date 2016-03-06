@@ -14,7 +14,7 @@ struct NodeMap
     uint32 SubNodeID;
     bool SubNodeOnline;
 };
-typedef UNORDERED_MAP<uint32, NodeMap> NodeMapList;
+typedef std::unordered_map<uint32, NodeMap> NodeMapList;
 
 class MapRelations
 {

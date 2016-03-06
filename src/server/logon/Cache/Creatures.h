@@ -28,7 +28,7 @@ struct CreatureTemplate
     uint32      movementId;
 };
 // Benchmarked: Faster than std::map (insert/find)
-typedef UNORDERED_MAP<uint32, CreatureTemplate> CreatureTemplateContainer;
+typedef std::unordered_map<uint32, CreatureTemplate> CreatureTemplateContainer;
 
 class Creatures
 {

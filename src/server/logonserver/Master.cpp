@@ -136,7 +136,7 @@ int Master::Run()
     sLog->outString("###########   (_/                         C O R E  .-/");
     sLog->outString("# ####### #                                       (_/");
     sLog->outString("# #     # #");
-    sLog->outString("   ## ##                        http://Laenalith-WoW.com");
+    sLog->outString("   ## ##");
     sLog->outString("\n");
 
     sLog->outString("%s%s%s (logonserver-daemon)", _FULLVERSION_A, git::getProduktVersionStr(), _FULLVERSION_B);

@@ -15,7 +15,7 @@
 #include <list>
 
 
-typedef UNORDERED_MAP<uint32, ControlSession*> CtrlSessionMap;
+typedef std::unordered_map<uint32, ControlSession*> CtrlSessionMap;
 typedef std::list<uint32> DiscoSessionList;
 
 class ControlSessionMgr

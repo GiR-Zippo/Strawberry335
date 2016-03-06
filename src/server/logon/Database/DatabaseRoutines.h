@@ -11,7 +11,7 @@
 #define SEC_IN_DAY 86400
 #define WRAPS 1000
 
-typedef UNORDERED_MAP <uint32, uint32> ItemInstanceMap;
+typedef std::unordered_map <uint32, uint32> ItemInstanceMap;
 
 class RebaseClass
 {

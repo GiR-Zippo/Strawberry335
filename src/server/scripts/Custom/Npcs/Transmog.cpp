@@ -2,7 +2,7 @@
 #include "ScriptedGossip.h"
 #include "PlayerTransmog.h"
 
-UNORDERED_MAP<uint32, uint32> PlayerTransmogMap;
+std::unordered_map<uint32, uint32> PlayerTransmogMap;
 
 enum ActionTypes
 {
@@ -151,7 +151,7 @@ void GenerateUnlockMenu(Player* player, uint32 transmogID)
 
 void UnlockTransmog(Player* player, uint32 costSubID)
 {
-    UNORDERED_MAP<uint32, uint32>::iterator itr = PlayerTransmogMap.find(player->GetGUIDLow());
+    std::unordered_map<uint32, uint32>::iterator itr = PlayerTransmogMap.find(player->GetGUIDLow());
 
     uint32 transmogID = 0;
 
@@ -203,7 +203,7 @@ void GenerateRebuyMenu(Player* player, uint32 transmogID)
 
 void RebuyTransmog(Player* player, uint32 costSubID)
 {
-    UNORDERED_MAP<uint32, uint32>::iterator itr = PlayerTransmogMap.find(player->GetGUIDLow());
+    std::unordered_map<uint32, uint32>::iterator itr = PlayerTransmogMap.find(player->GetGUIDLow());
 
     uint32 transmogID = 0;
 
