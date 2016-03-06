@@ -18,3 +18,12 @@ https://github.com/GiR-Zippo/Strawberry335/wiki/requirements
 ## Installation and Instruction
 
 This can be found here: https://github.com/GiR-Zippo/Strawberry335/wiki
+
+
+## Where is the World-Database?
+
+I know the World-database is missing :)
+
+But no panic. Atm. I'm doing some patches and updates on it.
+
+When it's ready to upload you'll find the database in this repository.
